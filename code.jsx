@@ -39,3 +39,28 @@ console.log(typeof Bar())
 const text = 'ABCD';
 const filter = text.split('').filter((element)=>element !=='B' && element !== 'D' )
 console.log(filter.join(''), 'filter'); // output -->  AC
+
+// Shuffling the words
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+const remove = (arr, len) =>{
+	let store; 
+	 const value1 = arr.map((item, index, array)=>{
+		return item.toString().slice(len);
+	})
+
+    const newArray = arr.shift()
+    arr.push(newArray);
+
+	const value2 = arr.map((item, index, array)=>{
+		return item.toString().slice(0, len);
+	})
+	
+	const result = value1.map((item, index)=>{
+		return item.concat(value2[index])
+	})
+	
+	return result;
+}
+
+console.log(remove(words, 2)); // ["rayli", "mitel", "iteex", "uberantde", "structionpr", "esentsp"]
