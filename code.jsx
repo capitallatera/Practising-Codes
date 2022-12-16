@@ -1,3 +1,5 @@
+const { arrayOf } = require("prop-types");
+
 // an empty object is considered as true in conditions
 if({}){
     console.log('Working')
@@ -322,6 +324,31 @@ printInSingleLine(0)
 printInSingleLine(1)
 FibonacciSeriesRecurssive(15); // first 2 number are static
 printInSingleLine('/n')
+
+// Prime Number
+function primeNumber(n){
+  for(let i=0; i<n; i++){
+    if(n%i === 0) return 'Not a Prime Number';
+    return 'Prime Number';
+  }
+}
+console.log(primeNumber(2));
+
+// list of Prime Number
+// function listOfPrimeNumber(n){
+//   for(let i=1; i<n; i++){
+//     for(let j=1; j<i; j++){
+//       console.log(i);
+//       if(i%j === 0) `${i} is not a prime`;
+//       `${i} is a prime`;
+//       // console.log(i);
+//     }
+//   }
+// }
+// listOfPrimeNumber(20)g
+
+
+
 
 
 
