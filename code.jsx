@@ -348,6 +348,44 @@ console.log(primeNumber(2));
 // listOfPrimeNumber(20)g
 
 
+// multiple 2 number with other * sign
+function multi(a, b){
+  let result=0;
+  for(let i=0; i<b; i++){
+      result = result + a;
+  }    
+  return result;
+}
+console.log(multi(2,2));
+
+// remove duplicate
+const arraySize = [2,4,1,1,2,5,7];
+function removeDuplicate(value){
+  // return Set(value);
+  return value.filter((item, index, arr) => !arr.includes(item, index + 1)  )
+}
+console.log(removeDuplicate(array));
+
+function multipleTwoNumber(x,y){
+  if(y>0){
+      return x + multipleTwoNumber(x, y -1)
+  }
+  if (y<0){
+      return -multipleTwoNumber(x, -y)
+  }
+}
+
+function multiply( x,  y){
+  if(y == 0) return 0;
+  if(y > 0 ) return (x + multiply(x, y-1));
+  if(y < 0 ) return -multiply(x, -y);
+}
+
+console.log(multiply(2,3))
+
+
+
+
 
 
 
