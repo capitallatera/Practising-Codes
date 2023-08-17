@@ -21,16 +21,32 @@
  * @param {string} word2
  * @return {string}
  */
-var mergeAlternately = function(word1, word2) {
-    const splitWord1 = word1.split('')
-    const splitWord2 = word2.split('')
-    const len = splitWord1?.length > splitWord2?.length ? splitWord1?.length : splitWord2?.length
-    let newArray = [];
-    for(let i = 0; i < len; i++) {
-        newArray.push(((splitWord1[i] || '')+(splitWord2[i] || '')))
-    }
-    return newArray.join('')
+// var mergeAlternately = function(word1, word2) {
+//     const splitWord1 = word1.split('')
+//     const splitWord2 = word2.split('')
+//     const len = splitWord1?.length > splitWord2?.length ? splitWord1?.length : splitWord2?.length
+//     let newArray = [];
+//     for(let i = 0; i < len; i++) {
+//         newArray.push(((splitWord1[i] || '')+(splitWord2[i] || '')))
+//     }
+//     return newArray.join('')
+// };
+// // const word1 = "abc", word2 = "pqr";
+// const word1 = "ab", word2 = "pqrs"
+// console.log(mergeAlternately(word1, word2))
+
+/**
+ * @param {string} str1
+ * @param {string} str2
+ * @return {string}
+ */
+var gcdOfStrings = function(str1, str2) {
+    
 };
-// const word1 = "abc", word2 = "pqr";
-const word1 = "ab", word2 = "pqrs"
-console.log(mergeAlternately(word1, word2))
+
+const str1 = "ABCABC", str2 = "ABC"
+// const str1 = "ABABAB", str2 = "ABAB"
+// const str1 = "LEET", str2 = "CODE"
+console.log(
+    
+)
