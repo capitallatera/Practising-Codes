@@ -44,7 +44,7 @@ var gcdOfStrings = function(str1, str2) {
     let gcdString1 = "";
     let gcdString2 = "";
     for(let i = 0; i < str1.length; i++){
-        console.log(gcdString1, str1[i], i, gcdString1.includes(str1[i]), str1.slice(i))
+        console.log(gcdString1, str1[i], i, gcdString1.includes(str1[i]), str1.slice(i, gcdString1.length))
         if(!gcdString1.includes(str1[i])) gcdString1 += str1[i]
     }
     return gcdString1
