@@ -43,27 +43,29 @@
 var gcdOfStrings = function(str1, str2) {
     let gcdString1 = "";
     let gcdString2 = "";
-    for(let i = 0; i < str1.length; i++){
-        console.log(gcdString1, str1[i], i, gcdString1.includes(str1[i]), str1.slice(i, gcdString1.length))
-        if(!gcdString1.includes(str1[i])) gcdString1 += str1[i]
+    const firstChar = str1[0]
+    let check = true
+    for(let i =0; i< str1.length; i++){
+        if(!gcdString1.includes(str1[i])){
+            gcdString1 += str1[i] 
+        } else {
+            const checkStart = str1[i] == firstChar && i;
+            // console.log(gcdString1.length, str1[i], i, firstChar, checkStart,  "Checking_value")   
+            if(checkStart) {
+                check = false
+            } else if(check) {
+                gcdString1 += str1[i]
+            }
+        }
     }
-    return gcdString1
-    // for(let i = 0; i < str2.length; i++){
-    //     if((!gcdString2.includes(str2[i])) || ((str2[i] == str2[i-1]) && i == gcdString2.length)) gcdString2 += str2[i]
-    // }
-    // return (gcdString1 == gcdString2) ? gcdString1 : ""
+    return ((str1+str2) == (str2+str1)) ? gcdString1 : "" 
 };
+// const str1 = "XXTXXT", str2 = "XXT"
+const str1 = "ABABABAB", str2 = "ABAB"
 // const str1 = "ABCABC", str2 = "ABC"
 // const str1 = "ABABAB", str2 = "ABAB"
 // const str1 = "LEET", str2 = "CODE"
 // const str1 = "ABCDEF", str2 = "ABC"
-const str1 = "TAUXXTAUXXTAUXXTAUXXTAUXX", str2 = "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"
+// const str1 = "TAUXXTAUXXTAUXXTAUXXTAUXX", str2 = "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"
 // const str1 = "CXTXNCXTXNCXTXNCXTXNCXTXN", str2 = "CXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXN"
-
-// gcdOfStrings(str1, str2)
-console.log(
-    gcdOfStrings(str1, str2)
-)
-
-// console.log(str1?.length, str2?.length, str1?.length/2)
-// console.log(str1.includes(str2, str2?.length))
+console.log(gcdOfStrings(str1, str2))
