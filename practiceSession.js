@@ -50,7 +50,6 @@ var gcdOfStrings = function(str1, str2) {
             gcdString1 += str1[i] 
         } else {
             const checkStart = str1[i] == firstChar && i;
-            // console.log(gcdString1.length, str1[i], i, firstChar, checkStart,  "Checking_value")   
             if(checkStart) {
                 check = false
             } else if(check) {
@@ -58,14 +57,28 @@ var gcdOfStrings = function(str1, str2) {
             }
         }
     }
-    return ((str1+str2) == (str2+str1)) ? gcdString1 : "" 
+    for(let i =0; i< str2.length; i++){
+        if(!gcdString2.includes(str2[i])){
+            gcdString2 += str2[i] 
+        } else {
+            const checkStart = str2[i] == firstChar && i;
+            if(checkStart) {
+                check = false
+            } else if(check) {
+                gcdString2 += str2[i]
+            }
+        }
+    }
+    // const result = gcdString1.length
+    // console.log(result, str1.length,"result")
+    // return ((str1+str2) == (str2+str1)) ? gcdString1 : "" 
 };
 // const str1 = "XXTXXT", str2 = "XXT"
-const str1 = "ABABABAB", str2 = "ABAB"
+// const str1 = "ABABABAB", str2 = "ABAB"
 // const str1 = "ABCABC", str2 = "ABC"
 // const str1 = "ABABAB", str2 = "ABAB"
 // const str1 = "LEET", str2 = "CODE"
 // const str1 = "ABCDEF", str2 = "ABC"
-// const str1 = "TAUXXTAUXXTAUXXTAUXXTAUXX", str2 = "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"
+const str1 = "TAUXXTAUXXTAUXXTAUXXTAUXX", str2 = "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"
 // const str1 = "CXTXNCXTXNCXTXNCXTXNCXTXN", str2 = "CXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXN"
 console.log(gcdOfStrings(str1, str2))
