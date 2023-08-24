@@ -40,20 +40,47 @@
  * @param {string} str2
  * @return {string}
  */
-const gcd = (x, y) => {
-    if(y==0) return x
-    return gcd(y, x%y)
-}
-var gcdOfStrings = function(str1, str2) {
-    const pos = gcd(str1.length, str2.length)
-    return ((str1+str2) == (str2+str1)) ? str1.slice(0, pos)  : ""
+// const gcd = (x, y) => {
+//     if(y==0) return x
+//     return gcd(y, x%y)
+// }
+// var gcdOfStrings = function(str1, str2) {
+//     const pos = gcd(str1.length, str2.length)
+//     return ((str1+str2) == (str2+str1)) ? str1.slice(0, pos)  : ""
+// };
+// // const str1 = "XXTXXT", str2 = "XXT"
+// const str1 = "ABABABAB", str2 = "ABAB"
+// // const str1 = "ABCABC", str2 = "ABC"
+// // const str1 = "ABABAB", str2 = "ABAB"
+// // const str1 = "LEET", str2 = "CODE"
+// // const str1 = "ABCDEF", str2 = "ABC"
+// // const str1 = "TAUXXTAUXXTAUXXTAUXXTAUXX", str2 = "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"
+// // const str1 = "CXTXNCXTXNCXTXNCXTXNCXTXN", str2 = "CXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXN"
+// console.log(gcdOfStrings(str1, str2))
+
+
+
+/**
+ * @param {number[]} candies
+ * @param {number} extraCandies
+ * @return {boolean[]}
+ */
+// const candies = [2,3,5,1,3], extraCandies = 3;
+// const candies = [4,2,1,1,2], extraCandies = 1
+// Memory Runtime efficient
+const candies = [12,1,12], extraCandies = 10
+var kidsWithCandies = function(candies, extraCandies) {
+    const max = Math.max(...candies)
+    for(let i = 0; i < candies.length; i++){
+        candies[i] = (extraCandies + candies[i]) >= max
+    }
+    return candies
 };
-// const str1 = "XXTXXT", str2 = "XXT"
-const str1 = "ABABABAB", str2 = "ABAB"
-// const str1 = "ABCABC", str2 = "ABC"
-// const str1 = "ABABAB", str2 = "ABAB"
-// const str1 = "LEET", str2 = "CODE"
-// const str1 = "ABCDEF", str2 = "ABC"
-// const str1 = "TAUXXTAUXXTAUXXTAUXXTAUXX", str2 = "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"
-// const str1 = "CXTXNCXTXNCXTXNCXTXNCXTXN", str2 = "CXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXNCXTXN"
-console.log(gcdOfStrings(str1, str2))
+// Runtime efficient
+var kidsWithCandies = function(candies, extraCandies) {
+    return candies.map((item, index, arr) => { return (extraCandies + item) >= Math.max(...arr)});
+};
+console.log(kidsWithCandies(candies, extraCandies))
+
+
+
