@@ -68,19 +68,46 @@
 // const candies = [2,3,5,1,3], extraCandies = 3;
 // const candies = [4,2,1,1,2], extraCandies = 1
 // Memory Runtime efficient
-const candies = [12,1,12], extraCandies = 10
-var kidsWithCandies = function(candies, extraCandies) {
-    const max = Math.max(...candies)
-    for(let i = 0; i < candies.length; i++){
-        candies[i] = (extraCandies + candies[i]) >= max
+// const candies = [12,1,12], extraCandies = 10
+// var kidsWithCandies = function(candies, extraCandies) {
+//     const max = Math.max(...candies)
+//     for(let i = 0; i < candies.length; i++){
+//         candies[i] = (extraCandies + candies[i]) >= max
+//     }
+//     return candies
+// };
+// // Runtime efficient
+// var kidsWithCandies = function(candies, extraCandies) {
+//     return candies.map((item, index, arr) => { return (extraCandies + item) >= Math.max(...arr)});
+// };
+// console.log(kidsWithCandies(candies, extraCandies))
+
+
+/**
+ * @param {number[]} flowerbed
+ * @param {number} n
+ * @return {boolean}
+ */
+const flowerbed = [1,0,0,0,1], n = 1;
+// const flowerbed = [1,0,0,0,1], n = 2;
+// const flowerbed = [1,0,0,0,0,0,1], n = 2;
+// const flowerbed = [1,0,0,0,0,1], n = 2;
+// const flowerbed = [0,0,1,0,1], n = 1;
+// const flowerbed = [0], n = 1;
+var canPlaceFlowers = function(flowerbed, n) {
+    if(!n) return true;
+    if(flowerbed.length == 1 && flowerbed[0] == 0) return true
+    for(let i = 0; i < flowerbed.length; i++){
+        if(
+            (i == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0) ||
+            (flowerbed[i] == 0 && flowerbed[i - 1] == 0 && flowerbed[i + 1] == 0) ||
+            (i == (flowerbed.length - 1) && flowerbed[i] == 0 && flowerbed[i - 1] == 0)
+        ) {
+            flowerbed[i] = 1
+            n--;
+            if(!n) return true;
+        }
     }
-    return candies
+    return false;
 };
-// Runtime efficient
-var kidsWithCandies = function(candies, extraCandies) {
-    return candies.map((item, index, arr) => { return (extraCandies + item) >= Math.max(...arr)});
-};
-console.log(kidsWithCandies(candies, extraCandies))
-
-
-
+console.log(canPlaceFlowers(flowerbed, n))
