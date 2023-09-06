@@ -116,26 +116,39 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @param {string} s
  * @return {string}
  */
-var reverseVowels = function(s) {
-    let start = 0;
-    let end = s.length -1
-    const vowels = 'aeiouAEIOU'
-    const word = s.split('')
-    while(start < end){
-        while(start < end && vowels.indexOf(word[start]) == -1){
-            start++;
-        }
-        while(start < end && vowels.indexOf(word[end]) == -1){
-            end--;
-        }
-        let temp = word[start];
-        word[start] = word[end];
-        word[end] = temp;
-        start++;
-        end--;
-    }
-    return word.join('')
+// var reverseVowels = function(s) {
+//     let start = 0;
+//     let end = s.length -1
+//     const vowels = 'aeiouAEIOU'
+//     const word = s.split('')
+//     while(start < end){
+//         while(start < end && vowels.indexOf(word[start]) == -1){
+//             start++;
+//         }
+//         while(start < end && vowels.indexOf(word[end]) == -1){
+//             end--;
+//         }
+//         let temp = word[start];
+//         word[start] = word[end];
+//         word[end] = temp;
+//         start++;
+//         end--;
+//     }
+//     return word.join('')
+// };
+// // const s = "hello"; // holle
+// const s = "leetcode"; // leotcede
+// console.log(reverseVowels(s))
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseWords = function(s) {
+    const splitWord = s.split(' ')
+    return splitWord.reverse().filter(space => space != '').join(' ')
 };
-// const s = "hello"; // holle
-const s = "leetcode"; // leotcede
-console.log(reverseVowels(s))
+// const s = "the sky is blue";
+// const s = "  hello world  "
+const s = "a good   example"
+console.log(reverseWords(s))
