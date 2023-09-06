@@ -144,11 +144,48 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @param {string} s
  * @return {string}
  */
-var reverseWords = function(s) {
-    const splitWord = s.split(' ')
-    return splitWord.reverse().filter(space => space != '').join(' ')
+// var reverseWords = function(s) {
+//     const splitWord = s.split(' ')
+//     return splitWord.reverse().filter(space => space != '').join(' ')
+// };
+// // const s = "the sky is blue";
+// // const s = "  hello world  "
+// const s = "a good   example"
+// console.log(reverseWords(s))
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+// using Notions => Time complexity 1
+var productExceptSelf = function(nums) {
+    let result = [];
+    let start = 0;
+    let end = nums.length;
+    while(start < end){
+        let temp = 1;
+        for(let i = 0; i < nums.length; i++){
+            if(start != i) temp *= nums[i]
+        }
+        result.push(temp == 0 ? Math.abs(temp) : temp)
+        start++
+    }
+    return result;
 };
-// const s = "the sky is blue";
-// const s = "  hello world  "
-const s = "a good   example"
-console.log(reverseWords(s))
+// 2
+var productExceptSelf = function(nums) {
+    let result = [];
+    for(let i = 0; i < nums.length; i ++){
+        let temp = 1;
+        for(let j = 0; j < nums.length; j++){
+            if(i != j) {
+                temp *= nums[j]
+            }
+        }
+        result.push(temp == 0 ? Math.abs(temp) : temp)
+    }
+    return result;
+};
+// const nums = [1,2,3,4];
+const nums = [-1,1,0,-3,3]
+console.log(productExceptSelf(nums))
