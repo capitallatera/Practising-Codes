@@ -94,20 +94,48 @@ const flowerbed = [1,0,0,0,1], n = 1;
 // const flowerbed = [1,0,0,0,0,1], n = 2;
 // const flowerbed = [0,0,1,0,1], n = 1;
 // const flowerbed = [0], n = 1;
-var canPlaceFlowers = function(flowerbed, n) {
-    if(!n) return true;
-    if(flowerbed.length == 1 && flowerbed[0] == 0) return true
-    for(let i = 0; i < flowerbed.length; i++){
-        if(
-            (i == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0) ||
-            (flowerbed[i] == 0 && flowerbed[i - 1] == 0 && flowerbed[i + 1] == 0) ||
-            (i == (flowerbed.length - 1) && flowerbed[i] == 0 && flowerbed[i - 1] == 0)
-        ) {
-            flowerbed[i] = 1
-            n--;
-            if(!n) return true;
+// var canPlaceFlowers = function(flowerbed, n) {
+//     if(!n) return true;
+//     if(flowerbed.length == 1 && flowerbed[0] == 0) return true
+//     for(let i = 0; i < flowerbed.length; i++){
+//         if(
+//             (i == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0) ||
+//             (flowerbed[i] == 0 && flowerbed[i - 1] == 0 && flowerbed[i + 1] == 0) ||
+//             (i == (flowerbed.length - 1) && flowerbed[i] == 0 && flowerbed[i - 1] == 0)
+//         ) {
+//             flowerbed[i] = 1
+//             n--;
+//             if(!n) return true;
+//         }
+//     }
+//     return false;
+// };
+// console.log(canPlaceFlowers(flowerbed, n))
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseVowels = function(s) {
+    let start = 0;
+    let end = s.length -1
+    const vowels = 'aeiouAEIOU'
+    const word = s.split('')
+    while(start < end){
+        while(start < end && vowels.indexOf(word[start]) == -1){
+            start++;
         }
+        while(start < end && vowels.indexOf(word[end]) == -1){
+            end--;
+        }
+        let temp = word[start];
+        word[start] = word[end];
+        word[end] = temp;
+        start++;
+        end--;
     }
-    return false;
+    return word.join('')
 };
-console.log(canPlaceFlowers(flowerbed, n))
+// const s = "hello"; // holle
+const s = "leetcode"; // leotcede
+console.log(reverseVowels(s))
