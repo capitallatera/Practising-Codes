@@ -158,34 +158,60 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @return {number[]}
  */
 // using Notions => Time complexity 1
-var productExceptSelf = function(nums) {
-    let result = [];
-    let start = 0;
-    let end = nums.length;
-    while(start < end){
-        let temp = 1;
-        for(let i = 0; i < nums.length; i++){
-            if(start != i) temp *= nums[i]
+// var productExceptSelf = function(nums) {
+//     let result = [];
+//     let start = 0;
+//     let end = nums.length;
+//     while(start < end){
+//         let temp = 1;
+//         for(let i = 0; i < nums.length; i++){
+//             if(start != i) temp *= nums[i]
+//         }
+//         result.push(temp == 0 ? Math.abs(temp) : temp)
+//         start++
+//     }
+//     return result;
+// };
+// // 2
+// var productExceptSelf = function(nums) {
+//     let result = [];
+//     for(let i = 0; i < nums.length; i ++){
+//         let temp = 1;
+//         for(let j = 0; j < nums.length; j++){
+//             if(i != j) {
+//                 temp *= nums[j]
+//             }
+//         }
+//         result.push(temp == 0 ? Math.abs(temp) : temp)
+//     }
+//     return result;
+// };
+// // const nums = [1,2,3,4];
+// const nums = [-1,1,0,-3,3]
+// console.log(productExceptSelf(nums))
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var increasingTriplet = function(nums) {
+    const size = nums.length;
+    if(size < 3) return false;
+    let mid = Number.MAX_VALUE , left = Number.MAX_VALUE;
+    for(let i = 0; i < size; i++){
+        if(nums[i] > mid){
+            return true;
+        } else if(nums[i] > left && nums[i] < mid ){
+            mid = nums[i];
+        } else if(nums[i] < left) {
+            left = nums[i];
         }
-        result.push(temp == 0 ? Math.abs(temp) : temp)
-        start++
     }
-    return result;
+    return false;
 };
-// 2
-var productExceptSelf = function(nums) {
-    let result = [];
-    for(let i = 0; i < nums.length; i ++){
-        let temp = 1;
-        for(let j = 0; j < nums.length; j++){
-            if(i != j) {
-                temp *= nums[j]
-            }
-        }
-        result.push(temp == 0 ? Math.abs(temp) : temp)
-    }
-    return result;
-};
-// const nums = [1,2,3,4];
-const nums = [-1,1,0,-3,3]
-console.log(productExceptSelf(nums))
+// const nums = [1,2,3,4,5];
+// const nums = [5,4,3,2,1]
+// const nums = [2,1,5,0,4,6]
+// const nums = [2,4,-2,-3];
+const nums = [20,100,10,12,5,13]
+console.log(increasingTriplet(nums))
