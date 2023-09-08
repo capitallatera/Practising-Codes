@@ -220,27 +220,47 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @param {character[]} chars
  * @return {number}
  */
-var compress = function(chars) {
-    let uniqueChar = [], charCount = [];
-    for(let i = 0; i < chars.length; i++){
-        if(uniqueChar.indexOf(chars[i]) == -1){
-            uniqueChar.push(chars[i])
-        }
-    }
-    for(let i = 0; i < uniqueChar.length; i++){
-        let count = 0;
-        for(let j = 0; j < chars.length; j++){
-            if(uniqueChar[i] == chars[j]){
-                count++
-            }
-        }
-        charCount.push(count)
-    }
-    const result = uniqueChar.map((char, index) => char+(charCount[index] == 1 ? '' : charCount[index]))
-    return result.join('').split('');
-};
+// var compress = function(chars) {
+//     let uniqueChar = [], charCount = [];
+//     for(let i = 0; i < chars.length; i++){
+//         if(uniqueChar.indexOf(chars[i]) == -1){
+//             uniqueChar.push(chars[i])
+//         }
+//     }
+//     for(let i = 0; i < uniqueChar.length; i++){
+//         let count = 0;
+//         for(let j = 0; j < chars.length; j++){
+//             if(uniqueChar[i] == chars[j]){
+//                 count++
+//             }
+//         }
+//         charCount.push(count)
+//     }
+//     const result = uniqueChar.map((char, index) => char+(charCount[index] == 1 ? '' : charCount[index]))
+//     return result.join('').split('');
+// };
 
-const chars = ["a","a","b","b","c","c","c"]
-// const chars = ["a"]
+// // const chars = ["a","a","b","b","c","c","c"]
+// // const chars = ["a"]
 // const chars = ["a","b","b","b","b","b","b","b","b","b","b","b","b"]
-console.log(compress(chars));
+// console.log(compress(chars));
+
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function(nums) {
+    let collectZeros = [], collectNonZeros = [];
+    for(let i = 0; i  < nums.length; i++){
+        if(nums[i] == 0){
+            collectZeros.push(nums[i])
+        } else {
+            collectNonZeros.push(nums[i])
+        }
+    }
+    const result = collectNonZeros.concat(collectZeros)
+    return result
+};
+// const nums = [0,1,0,3,12]  // [1,3,12,0,0]
+const nums = [0]
+console.log(moveZeroes(nums))
