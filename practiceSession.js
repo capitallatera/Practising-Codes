@@ -194,24 +194,53 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @param {number[]} nums
  * @return {boolean}
  */
-var increasingTriplet = function(nums) {
-    const size = nums.length;
-    if(size < 3) return false;
-    let mid = Number.MAX_VALUE , left = Number.MAX_VALUE;
-    for(let i = 0; i < size; i++){
-        if(nums[i] > mid){
-            return true;
-        } else if(nums[i] > left && nums[i] < mid ){
-            mid = nums[i];
-        } else if(nums[i] < left) {
-            left = nums[i];
+// var increasingTriplet = function(nums) {
+//     const size = nums.length;
+//     if(size < 3) return false;
+//     let mid = Number.MAX_VALUE , left = Number.MAX_VALUE;
+//     for(let i = 0; i < size; i++){
+//         if(nums[i] > mid){
+//             return true;
+//         } else if(nums[i] > left && nums[i] < mid ){
+//             mid = nums[i];
+//         } else if(nums[i] < left) {
+//             left = nums[i];
+//         }
+//     }
+//     return false;
+// };
+// // const nums = [1,2,3,4,5];
+// // const nums = [5,4,3,2,1]
+// // const nums = [2,1,5,0,4,6]
+// // const nums = [2,4,-2,-3];
+// const nums = [20,100,10,12,5,13]
+// console.log(increasingTriplet(nums))
+
+/**
+ * @param {character[]} chars
+ * @return {number}
+ */
+var compress = function(chars) {
+    let uniqueChar = [], charCount = [];
+    for(let i = 0; i < chars.length; i++){
+        if(uniqueChar.indexOf(chars[i]) == -1){
+            uniqueChar.push(chars[i])
         }
     }
-    return false;
+    for(let i = 0; i < uniqueChar.length; i++){
+        let count = 0;
+        for(let j = 0; j < chars.length; j++){
+            if(uniqueChar[i] == chars[j]){
+                count++
+            }
+        }
+        charCount.push(count)
+    }
+    const result = uniqueChar.map((char, index) => char+(charCount[index] == 1 ? '' : charCount[index]))
+    return result.join('').split('');
 };
-// const nums = [1,2,3,4,5];
-// const nums = [5,4,3,2,1]
-// const nums = [2,1,5,0,4,6]
-// const nums = [2,4,-2,-3];
-const nums = [20,100,10,12,5,13]
-console.log(increasingTriplet(nums))
+
+const chars = ["a","a","b","b","c","c","c"]
+// const chars = ["a"]
+// const chars = ["a","b","b","b","b","b","b","b","b","b","b","b","b"]
+console.log(compress(chars));
