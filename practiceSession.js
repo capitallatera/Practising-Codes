@@ -249,18 +249,42 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var moveZeroes = function(nums) {
-    let collectZeros = [], collectNonZeros = [];
-    for(let i = 0; i  < nums.length; i++){
-        if(nums[i] == 0){
-            collectZeros.push(nums[i])
-        } else {
-            collectNonZeros.push(nums[i])
+// var moveZeroes = function(nums) {
+//     let collectZeros = [], collectNonZeros = [];
+//     for(let i = 0; i  < nums.length; i++){
+//         if(nums[i] == 0){
+//             collectZeros.push(nums[i])
+//         } else {
+//             collectNonZeros.push(nums[i])
+//         }
+//     }
+//     const result = collectNonZeros.concat(collectZeros)
+//     return result
+// };
+// // const nums = [0,1,0,3,12]  // [1,3,12,0,0]
+// const nums = [0]
+// console.log(moveZeroes(nums))
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isSubsequence = function(s, t) {
+    const s1 = s.split('');
+    const s2 = t.split('');
+    let subsequent = 0
+    for(let i = 0; i < t.length; i++){
+        if(s1[subsequent] == s2[i]){
+            subsequent++;
         }
     }
-    const result = collectNonZeros.concat(collectZeros)
-    return result
+    return subsequent == s1.length;
 };
-// const nums = [0,1,0,3,12]  // [1,3,12,0,0]
-const nums = [0]
-console.log(moveZeroes(nums))
+
+// const s = "abc", t = "ahbgdc";
+// const s = "acb", t = "ahbgdc";
+// const s = "axc", t = "ahbgdc"
+// const s = "", t = "ahbgdc"
+const s = "b", t = "abc";
+console.log(isSubsequence(s, t))
