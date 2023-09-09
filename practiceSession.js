@@ -270,21 +270,42 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @param {string} t
  * @return {boolean}
  */
-var isSubsequence = function(s, t) {
-    const s1 = s.split('');
-    const s2 = t.split('');
-    let subsequent = 0
-    for(let i = 0; i < t.length; i++){
-        if(s1[subsequent] == s2[i]){
-            subsequent++;
-        }
-    }
-    return subsequent == s1.length;
-};
+// var isSubsequence = function(s, t) {
+//     const s1 = s.split('');
+//     const s2 = t.split('');
+//     let subsequent = 0
+//     for(let i = 0; i < t.length; i++){
+//         if(s1[subsequent] == s2[i]){
+//             subsequent++;
+//         }
+//     }
+//     return subsequent == s1.length;
+// };
 
-// const s = "abc", t = "ahbgdc";
-// const s = "acb", t = "ahbgdc";
-// const s = "axc", t = "ahbgdc"
-// const s = "", t = "ahbgdc"
-const s = "b", t = "abc";
-console.log(isSubsequence(s, t))
+// // const s = "abc", t = "ahbgdc";
+// // const s = "acb", t = "ahbgdc";
+// // const s = "axc", t = "ahbgdc"
+// // const s = "", t = "ahbgdc"
+// const s = "b", t = "abc";
+// console.log(isSubsequence(s, t))
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+const max = (a, b) => a > b ? a : b;
+const min = (a, b) => a < b ? a : b;
+var maxArea = function(height) {
+    let left = 0, right = height.length -1, result = 0;
+    while(left < right){
+        const currentArea = min(height[left], height[right]) * (right - left);
+        // console.log(height[left], height[right],(right - left), currentArea, "currentArea")
+        result = max(result, currentArea);
+        if(height[left] < height[right]) left++;
+        else right--;
+    }
+    return result
+};
+const height = [1,8,6,2,5,4,8,3,7];
+// const height = [1,1];
+console.log(maxArea(height));
