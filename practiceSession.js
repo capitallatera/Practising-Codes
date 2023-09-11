@@ -293,19 +293,46 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @param {number[]} height
  * @return {number}
  */
-const max = (a, b) => a > b ? a : b;
-const min = (a, b) => a < b ? a : b;
-var maxArea = function(height) {
-    let left = 0, right = height.length -1, result = 0;
-    while(left < right){
-        const currentArea = min(height[left], height[right]) * (right - left);
-        // console.log(height[left], height[right],(right - left), currentArea, "currentArea")
-        result = max(result, currentArea);
-        if(height[left] < height[right]) left++;
-        else right--;
-    }
-    return result
-};
-const height = [1,8,6,2,5,4,8,3,7];
+// const max = (a, b) => a > b ? a : b;
+// const min = (a, b) => a < b ? a : b;
+// var maxArea = function(height) {
+//     let left = 0, right = height.length -1, result = 0;
+//     while(left < right){
+//         const currentArea = min(height[left], height[right]) * (right - left);
+//         result = max(result, currentArea);
+//         if(height[left] < height[right]) left++;
+//         else right--;
+//     }
+//     return result
+// };
+// // const height = [1,8,6,2,5,4,8,3,7];
 // const height = [1,1];
-console.log(maxArea(height));
+// console.log(maxArea(height));
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maxOperations = function(nums, k) {
+    let i = 0, j = nums.length - 1;
+    let ans = 0;
+    while(i < j){
+        if(nums[i] + nums[j] == k){
+            ans++;
+            i++;
+            j--;
+        } else if(nums[i] + nums[j] > k){
+            j--
+        } else {
+            i++
+        }
+    }
+    return ans;
+};
+// const nums = [1,2,3,4], k = 5;
+// const nums = [3,1,3,4,3], k = 6
+const nums = [4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4], k = 2  // 2
+console.log(maxOperations(nums, k))
+
+
