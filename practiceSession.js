@@ -340,9 +340,8 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @param {number} k
  * @return {number}
  */
-const findMax = (a, b) => a > b ? a : b;
 var findMaxAverage = function(nums, k) {
-    let start = 0, sum = 0, max = Number.MIN_VALUE;
+    let start = 0, sum = 0, max = Number.MIN_SAFE_INTEGER;
     for(let i = 0; i < nums.length; i++ ){
         sum+=nums[i];
         if(i >= k -1){
@@ -350,7 +349,6 @@ var findMaxAverage = function(nums, k) {
             sum-= nums[start++];
         }
     }
-    // console.log(parseFloat(max), k)
     return max/k
 };
 // const nums = [1,12,-5,-6,50,3], k = 4;
