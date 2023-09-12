@@ -314,25 +314,47 @@ const flowerbed = [1,0,0,0,1], n = 1;
  * @param {number} k
  * @return {number}
  */
-var maxOperations = function(nums, k) {
-    let i = 0, j = nums.length - 1;
-    let ans = 0;
-    while(i < j){
-        if(nums[i] + nums[j] == k){
-            ans++;
-            i++;
-            j--;
-        } else if(nums[i] + nums[j] > k){
-            j--
-        } else {
-            i++
+// var maxOperations = function(nums, k) {
+//     let i = 0, j = nums.length - 1;
+//     let ans = 0;
+//     while(i < j){
+//         if(nums[i] + nums[j] == k){
+//             ans++;
+//             i++;
+//             j--;
+//         } else if(nums[i] + nums[j] > k){
+//             j--
+//         } else {
+//             i++
+//         }
+//     }
+//     return ans;
+// };
+// // const nums = [1,2,3,4], k = 5;
+// // const nums = [3,1,3,4,3], k = 6
+// const nums = [4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4], k = 2  // 2
+// console.log(maxOperations(nums, k))
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+const findMax = (a, b) => a > b ? a : b;
+var findMaxAverage = function(nums, k) {
+    let start = 0, sum = 0, max = Number.MIN_VALUE;
+    for(let i = 0; i < nums.length; i++ ){
+        sum+=nums[i];
+        if(i >= k -1){
+            max = Math.max(max, sum);
+            sum-= nums[start++];
         }
     }
-    return ans;
+    // console.log(parseFloat(max), k)
+    return max/k
 };
-// const nums = [1,2,3,4], k = 5;
-// const nums = [3,1,3,4,3], k = 6
-const nums = [4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4], k = 2  // 2
-console.log(maxOperations(nums, k))
+// const nums = [1,12,-5,-6,50,3], k = 4;
+const nums = [-1], k = 1;
+console.log(findMaxAverage(nums, k))
 
 
